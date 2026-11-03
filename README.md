@@ -46,11 +46,7 @@ The suite contains 34 test methods across model, repository, manager, and integr
 
 ## Use the module
 
-    from student_records import (
-        StudentRecord,
-        StudentManager,
-        InMemoryStudentRepository,
-    )
+    from student_records import StudentRecord, StudentManager, InMemoryStudentRepository
 
     repository = InMemoryStudentRepository()
     manager = StudentManager(repository)

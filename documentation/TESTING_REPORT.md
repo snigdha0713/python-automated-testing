@@ -27,8 +27,8 @@ Student records are immutable. An update creates a replacement record, so caller
 
 | Test case | Why it is included |
 |---|---|
-| Strip ID and name | Confirms surrounding spaces are removed. |
-| Immutable marks | Ensures changing the original input list does not change the stored record. |
+| Strip ID and name | Ensures surrounding spaces are removed. |
+| Immutable marks | Confirms changing the original input list does not change the stored record. |
 | Average calculation | Checks the arithmetic mean of multiple marks. |
 | Grade boundaries | Checks values at the edge of each grade band. |
 | Empty ID, name, or marks | Rejects incomplete student information. |
@@ -61,7 +61,7 @@ The main workflow test adds two students, searches for one, updates a record, ca
 
 Python 3.10 or newer is recommended. No third-party packages are required.
 
-From the repository root, run:
+From the project root, run:
 
     python -m unittest discover -s tests -v
 
