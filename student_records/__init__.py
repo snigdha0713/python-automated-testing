@@ -5,11 +5,4 @@ from .manager import StudentManager
 from .models import StudentRecord
 from .repository import InMemoryStudentRepository
 
-__all__ = [
-    "StudentRecord",
-    "StudentManager",
-    "InMemoryStudentRepository",
-    "InvalidStudentError",
-    "DuplicateStudentError",
-    "StudentNotFoundError",
-]
+__all__ = ["StudentRecord", "StudentManager", "InMemoryStudentRepository", "InvalidStudentError", "DuplicateStudentError", "StudentNotFoundError"]

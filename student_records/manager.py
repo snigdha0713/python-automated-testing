@@ -3,10 +3,8 @@
 from .models import StudentRecord
 from .repository import InMemoryStudentRepository
 
-
 class StudentManager:
     """Apply student-management rules using a repository."""
-
     def __init__(self, repository: InMemoryStudentRepository) -> None:
         self._repository = repository
 
@@ -19,14 +17,7 @@ class StudentManager:
     def list_students(self) -> list[StudentRecord]:
         return self._repository.list_all()
 
-    def update_student(
-        self,
-        student_id: str,
-        *,
-        name: str,
-        marks: list[int] | tuple[int, ...],
-    ) -> StudentRecord:
-        """Update a student's name and marks while retaining their ID."""
+    def update_student(self, student_id: str, *, name: str, marks: list[int] | tuple[int, ...]) -> StudentRecord:
         clean_id = self._validate_id(student_id)
         updated = StudentRecord(clean_id, name, marks)
         self._repository.update(updated)
@@ -47,25 +38,12 @@ class StudentManager:
         return self.get_student(student_id).grade
 
     def get_class_summary(self) -> dict[str, object]:
-        """Return count, class average, and top student.
-
-        The first inserted student is retained when averages are tied.
-        """
         students = self.list_students()
         if not students:
-            return {
-                "student_count": 0,
-                "class_average": None,
-                "top_student": None,
-            }
-
+            return {"student_count": 0, "class_average": None, "top_student": None}
         class_average = sum(student.average for student in students) / len(students)
         top_student = max(students, key=lambda student: student.average)
-        return {
-            "student_count": len(students),
-            "class_average": class_average,
-            "top_student": top_student,
-        }
+        return {"student_count": len(students), "class_average": class_average, "top_student": top_student}
 
     @staticmethod
     def _validate_id(student_id: str) -> str:
